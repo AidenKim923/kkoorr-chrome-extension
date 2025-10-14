@@ -1,0 +1,20 @@
+{
+	"manifest_version": 3,
+	"name": "로드나인 웹상점 + 컬쳐랜드 자동선택",
+	"version": "1.2",
+	"description": "온스토브 자동 이동/체크 + PAYCO 자동 로그인 + 넷마블 컬쳐랜드 자동 선택",
+	"content_scripts": [
+		{
+			"matches": [
+				"https://webstore.onstove.com/ko/l9/order/*",
+				"https://webstore.onstove.com/ko/l9/item/7976",
+				"https://bill.payco.com/*",
+				"https://nmp.netmarble.com/cross-pay/V5/*"
+			],
+			"js": ["config.js", "content.js"],
+			"all_frames": true,
+			"run_at": "document_idle"
+		}
+	],
+	"permissions": []
+}
