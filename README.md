@@ -41,7 +41,6 @@ window.PAYCO_CONFIG = {
 ├── manifest.json          # 확장프로그램 설정
 ├── content.js            # 자동화 스크립트
 ├── config.js             # 개인 설정 (Git 제외)
-├── config.example.js     # 설정 파일 예제
 └── .gitignore           # Git 제외 파일 목록
 ```
 
