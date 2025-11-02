@@ -1,20 +1,28 @@
 {
 	"manifest_version": 3,
-	"name": "로드나인 웹상점 + 컬쳐랜드 자동선택",
-	"version": "1.2",
-	"description": "온스토브 자동 이동/체크 + PAYCO 자동 로그인 + 넷마블 컬쳐랜드 자동 선택",
+	"name": "꾸르매크로",
+	"version": "1.3",
+	"description": "온스토브 자동 이동/체크 + PAYCO 자동 로그인 + 넷마블 컬쳐랜드 자동 선택 + 아이템매니아 자동입력",
 	"content_scripts": [
 		{
 			"matches": [
 				"https://webstore.onstove.com/ko/l9/order/*",
 				"https://webstore.onstove.com/ko/l9/item/7976",
 				"https://bill.payco.com/*",
-				"https://nmp.netmarble.com/cross-pay/V5/*"
+				"https://nmp.netmarble.com/cross-pay/V5/*",
+				"https://trade.itemmania.com/buy/*",
+				"https://trade.itemmania.com/myroom/buy/buy_ing_view.html*",
+				"https://trade.itemmania.com/myroom/sell/sell_ing_view.html*",
+				"https://trade.itemmania.com/myroom/chat/new_chat.html*"
 			],
 			"js": ["config.js", "content.js"],
 			"all_frames": true,
 			"run_at": "document_idle"
 		}
 	],
-	"permissions": []
+	"permissions": ["storage"],
+	"action": {
+		"default_popup": "popup.html",
+		"default_title": "확장 프로그램 설정"
+	}
 }
