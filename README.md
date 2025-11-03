@@ -1,64 +1,100 @@
-# 로드나인 웹상점 자동화 확장프로그램
+# 꾸르매크로 (Chrome Extension)
 
-로드나인(L9) 게임 아이템 구매 시 반복되는 클릭 작업을 자동화하는 Chrome 확장프로그램입니다.
+꾸르컴퍼니에서 사용하는 결제 및 구매할때 불필요한 작업을 방지하는 크롬 익스텐션입니다.
 
-## 기능
+## 주요 기능
 
-- **온스토브 웹상점**: 주문 페이지에서 상품 페이지로 자동 이동, 수량 및 약관 동의 자동 입력
-- **PAYCO 결제**: 로그인 정보 자동 입력
-- **넷마블 결제**: 컬쳐랜드 결제 수단 자동 선택 및 동의 체크
+### 1. 온스토브(로드나인) 웹상점 자동화
+- 주문 페이지에서 상품 페이지로 자동 이동
+- 수량(4개) 자동 입력
+- 약관 동의 자동 체크
+
+### 2. PAYCO 결제 자동 로그인
+- 전화번호 자동 입력
+- 생년월일 자동 입력
+
+### 3. 넷마블 결제 자동화
+- 컬쳐랜드 결제 수단 자동 선택
+- 동의 체크박스 자동 선택
+- 결제 버튼 자동 클릭
+
+### 4. 아이템매니아 자동화
+- **구매 페이지 자동 입력**
+  - 수량: 4000 자동 입력
+  - 가격: 60000 자동 입력
+  - 제목: "혈원 분배용 다이아 삽니다" 자동 입력
+  - 즉시구매 등록 자동 체크
+  - VIP 등급 자동 선택
+  - 캐릭터 이름 랜덤 선택
+  - 구매등록 버튼을 페이지 상단에 고정
+
+- **거래 페이지 자동화**
+  - 현금영수증 미발급 자동 선택
+  - 판매자 동의 팝업 자동 처리
+
+- **채팅 빠른 응답**
+  - 채팅에서 빠른 응답 버튼 제공
+  - 커스터마이징 가능한 메시지
+
+### 5. 설정 UI
+- 확장프로그램 아이콘 클릭으로 설정 페이지 접근
+- PAYCO 로그인 정보 관리
+- 캐릭터 이름 목록 관리
+- 빠른 응답 메시지 커스터마이징
+- Chrome Storage API를 통한 설정 동기화
 
 ## 설치 방법
 
 1. 이 저장소를 클론하거나 다운로드합니다
 ```bash
-git clone https://github.com/your-username/repo-name.git
+git clone https://github.com/AidenKim923/kkoorr-chrome-extension.git
 ```
 
-2. `config.example.js` 파일을 `config.js`로 복사합니다
-```bash
-cp config.example.js config.js
-```
-
-3. `config.js` 파일을 열어 본인의 정보를 입력합니다
-```javascript
-window.PAYCO_CONFIG = {
-    memberId: "01012345678",  // 본인의 전화번호
-    birth: "900101"            // 본인의 생년월일 (YYMMDD)
-};
-```
-
-4. Chrome 브라우저에서 확장프로그램을 로드합니다
+2. Chrome 브라우저에서 확장프로그램을 로드합니다
    - `chrome://extensions/` 접속
    - 우측 상단 "개발자 모드" 활성화
    - "압축해제된 확장 프로그램을 로드합니다" 클릭
    - 다운로드한 폴더 선택
 
+3. 확장프로그램 아이콘을 클릭하여 설정 페이지에서 개인 정보를 입력합니다
+   - PAYCO 전화번호 및 생년월일
+   - 캐릭터 이름 목록
+   - 빠른 응답 메시지 (선택사항)
+
 ## 사용법
 
+### 자동 실행
 확장프로그램을 설치하면 다음 사이트에서 자동으로 작동합니다:
 
-- https://webstore.onstove.com/ko/l9/*
-- https://bill.payco.com/*
-- https://nmp.netmarble.com/cross-pay/V5/*
+- `https://webstore.onstove.com/ko/l9/order/*` - 로드나인 웹상점 1만다이아 상품 페이지로 자동 이동
+- `https://webstore.onstove.com/ko/l9/item/7976` - 로드나인 웹상점 수량 및 약관 자동 입력
+- `https://bill.payco.com/*` - PAYCO 로그인 정보 자동 입력
+- `https://nmp.netmarble.com/cross-pay/V5/*` - 컬쳐랜드 결제 자동화
+- `https://trade.itemmania.com/buy/*` - 구매 페이지 자동 입력
+- `https://trade.itemmania.com/myroom/buy/buy_ing_view.html*` - 아이템매니아 구매 화면 현금영수증 미발급 선택
+- `https://trade.itemmania.com/myroom/sell/sell_ing_view.html*` - 아이템매니아 판매 화면 현금영수증 미발급 선택
+- `https://trade.itemmania.com/myroom/chat/new_chat.html*` - 아이템매니아 채팅 빠른 응답 버튼 제공
 
-별도의 조작 없이 페이지 로드 시 자동으로 실행됩니다.
+### 설정 변경
+- 확장프로그램 아이콘 클릭 → 설정 페이지에서 정보 수정 → 저장 버튼 클릭
+- 설정은 Chrome 계정과 동기화됩니다
 
 ## 주의사항
 
-- `config.js` 파일은 개인정보를 포함하고 있으므로 절대 공유하지 마세요
-- 이 확장프로그램은 개인 사용 목적으로 제작되었습니다
+- 개인정보 (전화번호, 생년월일 등)는 Chrome Storage에만 저장되며, 외부로 전송되지 않습니다
 - 사이트 구조 변경 시 작동하지 않을 수 있습니다
+- `사용으로 인한 불이익`은 책임지지 않습니다.
 
 ## 파일 구조
 
 ```
 .
 ├── manifest.json          # 확장프로그램 설정
-├── content.js            # 자동화 스크립트
-├── config.js             # 개인 설정 (Git 제외)
-├── config.example.js     # 설정 파일 예제
-└── .gitignore           # Git 제외 파일 목록
+├── content.js             # 메인 스크립트
+├── popup.html             # 설정 UI
+├── popup.js               # 설정 UI 로직
+├── config.example.js      # 설정 파일 예제
+└── .gitignore
 ```
 
 ## 라이선스
