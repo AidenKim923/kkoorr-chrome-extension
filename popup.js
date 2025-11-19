@@ -1,17 +1,13 @@
 // ========================================
 // 기본값 설정
 // ========================================
-const DEFAULT_CONFIG = {
+const DEFAULT_CONFIG = window.PAYCO_CONFIG || {
   memberId: '',
   birth: '',
+  giftshowDefaultPhone: '010-0000-0000',
+  giftshowSenderName: '보내는이',
   characterNames: [],
-  quickReplies: {
-    에이스: ['', '', ''],
-    광속: ['', '', ''],
-    찐: ['', '', ''],
-    '상점-재화': [''],
-    다하면인수: [''],
-  },
+  quickReplies: {},
 };
 
 // ========================================
@@ -88,6 +84,10 @@ function displaySettings(settings) {
   document.getElementById('memberId').value = settings.memberId || '';
   document.getElementById('birth').value = settings.birth || '';
 
+  // 기프티쇼 설정
+  document.getElementById('giftshowSenderName').value = settings.giftshowSenderName || DEFAULT_CONFIG.giftshowSenderName || '';
+  document.getElementById('giftshowDefaultPhone').value = settings.giftshowDefaultPhone || DEFAULT_CONFIG.giftshowDefaultPhone || '';
+
   // 캐릭터 이름 목록
   renderCharacterList(settings.characterNames || []);
 
@@ -151,6 +151,8 @@ function collectSettings() {
   return {
     memberId: document.getElementById('memberId').value,
     birth: document.getElementById('birth').value,
+    giftshowSenderName: document.getElementById('giftshowSenderName').value,
+    giftshowDefaultPhone: document.getElementById('giftshowDefaultPhone').value,
     characterNames,
     quickReplies,
   };
